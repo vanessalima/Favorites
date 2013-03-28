@@ -48,8 +48,8 @@
 	function trasitionUser(i) {
 
 		$.getJSON('favs.json', function(data) {
-//			alert(sessionStorage.idUser);
-			$('#usr').children('ul').replaceWith('<p>'+data[i].user.name+'</br></p>').listview('refresh');
+			//alert(data[i].user.name);
+			$('#usr').replaceWith('<div id="usr">'+data[i].user.name+'</br></div>').listview('refresh');
 		});
 		
 		$.mobile.changePage('#user');
@@ -66,9 +66,7 @@
 	
 	<div data-role="content">
 		<div id="usr">
-        	<ul data-role="listview">
-
-            </ul>
+		
         </div>
 	</div><!-- /content -->
 	
