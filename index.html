@@ -35,20 +35,24 @@
 <script type="text/javascript">
     $.getJSON('favs.json', function(data) {
         $.each(data, function (i, value) {
-			$('#tweets').children('ul').append('<div id='+i+'><a href="javascript:trasitionUser()" onClick="sessionStorage.idUser='+i+'" title="User Info">'+data[i].user.name+'</a></br>'+data[i].text+'</br>'+data[i].in_reply_to_user_str+'</p></div>').listview('refresh');
+			$('#tweets').children('ul').append('<div id='+i+'><a href="javascript:\
+			trasitionUser('+i+')" onClick="sessionStorage.idUser='+i+'" title="User Info">'+
+			value.user.name+'</a></br>'+value.text+'</br>'+value.in_reply_to_user_str+
+			'</p></div>').listview('refresh');
 			<!-- Insert the from where is the replies-->
         });
     });
 </script>
 
 <script type="text/javascript">
-	function trasitionUser() {
-		$.mobile.changePage('#user');
+	function trasitionUser(i) {
 
 		$.getJSON('favs.json', function(data) {
 //			alert(sessionStorage.idUser);
-			$('#usr').children('ul').replaceWith('<p>'+data[1].user.name+'</br></p>').listview('refresh');;
+			$('#usr').children('ul').replaceWith('<p>'+data[i].user.name+'</br></p>').listview('refresh');
 		});
+		
+		$.mobile.changePage('#user');
 	}
 </script>
 
@@ -57,7 +61,7 @@
 <div data-role="page" id="user">
 
 	<div data-role="header">
-		<h1>Page Title</h1>
+		<h1>User page</h1>
 	</div><!-- /header -->
 	
 	<div data-role="content">
@@ -80,7 +84,7 @@
 <div data-role="page" id="tweetPage">
 
 	<div data-role="header">
-		<h1>Page Title</h1>
+		<h1>Tweet page</h1>
 	</div><!-- /header -->
 
 	<div data-role="content">
