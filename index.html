@@ -36,9 +36,9 @@
     $.getJSON('favs.json', function(data) {
         $.each(data, function (i, value) {
 			$('#tweets').children('ul').append('<div id='+i+'><a href="javascript:\
-			trasitionUser('+i+')" onClick="sessionStorage.idUser='+i+'" title="User Info">'+
-			value.user.name+'</a></br>'+value.text+'</br>'+value.in_reply_to_user_str+
-			'</p></div>').listview('refresh');
+			trasitionUser('+i+')" data-role="button">' 
+			+ value.user.name+'</a></br>'+value.text+'</br>' + 
+			value.in_reply_to_user_str + '</p></div>').listview('refresh');
 			<!-- Insert the from where is the replies-->
         });
     });
