@@ -37,8 +37,7 @@
         $.each(data, function (i, value) {
 			$('#tweets').children('ul').append('<div id='+i+'><a href="javascript:\
 			trasitionUser('+i+')" data-role="button">' 
-			+ value.user.name+'</a></br>'+value.text+'</br>' + 
-			value.in_reply_to_user_str + '</p></div>').listview('refresh');
+			+ value.user.name+'</a></br>'+value.text+'</br></div>').listview('refresh');
 			<!-- Insert the from where is the replies-->
         });
     });
