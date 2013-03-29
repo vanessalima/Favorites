@@ -1,116 +1,101 @@
 <html>
-<head>
+	<head>
 
-<title>My Favourite Things</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>My Favourite Things</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
-
-<script scr="scripts.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
 	
-</head>
+	</head>
 
-<body>
+	<body>
 
-<!-- Main View page - general information -->
-<div data-role="page" id="Main">
+		<!-- Main View page - general information -->
+		<div data-role="page" id="Main">
 
-	<div data-role="header">
-		<h1>Tweets List</h1>
-	</div><!-- /header -->
+			<div data-role="header">
+				<h1>Tweets List</h1>
+			</div><!-- /header -->
 
-	<div data-role="content">
-		<div id="tweets">
-        	<ul data-role="listview" data-theme="tw">
+			<div data-role="content">
+				<div id="tweets">
+					<ul data-role="listview" data-theme="tw">
 	
-            </ul>
-        </div>
-	</div><!-- /content -->
+					</ul>
+				</div>
+			</div><!-- /content -->
 
-	<div data-role="footer">
-	</div><!-- /footer -->
-</div><!-- /Main page -->
+			<div data-role="footer">
+			</div><!-- /footer -->
+		</div><!-- /Main page -->
 
+		<!-- User View page -->
+		<div data-role="page" id="user">
 
-<script type="text/javascript">
-    $.getJSON('favs.json', function(data) {
-        $.each(data, function (i, value) {
-			$('#tweets').children('ul').append('<div id='+i+'><a href="javascript:\
-			trasitionUser('+i+')" data-role="button">' 
-			+ value.user.name+'</a></br>'+value.text+'</br></div>').listview('refresh');
-			<!-- Insert the from where is the replies-->
-        });
-    });
-</script>
-
-<script type="text/javascript">
-	function trasitionUser(i) {
-
-		$.getJSON('favs.json', function(data) {
-			//alert(data[i].user.name);
-			$('#usr').replaceWith('<div id="usr">'+data[i].user.name+'</br></div>').listview('refresh');
-		});
+			<div data-role="header">
+				<h1>User page</h1>
+			</div><!-- /header -->
+	
+			<div data-role="content">
+				<div id="usr">
 		
-		$.mobile.changePage('#user');
-	}
-</script>
-
-
-<!-- User View page -->
-<div data-role="page" id="user">
-
-	<div data-role="header">
-		<h1>User page</h1>
-	</div><!-- /header -->
+				</div>
+			</div><!-- /content -->
 	
-	<div data-role="content">´
 	
-		<div id="usr">
-<<<<<<< HEAD
-		<script type="text/javascript">transitionUser()</script>
-        	<ul data-role="listview">
+			<div data-role="footer">
+				<a href="#Main" data-role="button">Home</a>
+			</div><!-- /footer -->
+	
+		</div><!-- /User Page -->
 
-            </ul>
-=======
+
+		<!-- Tweet View page -->
+		<div data-role="page" id="tweetPage">
+
+			<div data-role="header">
+				<h1>Tweet page</h1>
+			</div><!-- /header -->
+
+			<div data-role="content">
+				<div id="post">
+					<ul data-role="listview">
+
+					</ul>
+				</div>
+			</div><!-- /content -->
+	
+	
+			<div data-role="footer">
+			<a href="#Main" data-role="button">Home</a>
+			</div><!-- /footer -->
+	
+		</div><!-- /Tweet Page -->
+
+		<script type="text/javascript">
+			$.getJSON('favs.json', function(data) {
+				$.each(data, function (i, value) {
+					$('#tweets').children('ul').append('<div id='+i+'><a href="javascript:\
+					trasitionUser('+i+')" data-role="button">' 
+					+ value.user.name+'</a></br>'+value.text+'</br></div>').listview('refresh');
+					<!-- Insert the from where is the replies-->
+				});
+			});
+		</script>
+
+		<script type="text/javascript">
+			function trasitionUser(i) {
+
+				$.getJSON('favs.json', function(data) {
+					//alert(data[i].user.name);
+					$('#usr').replaceWith('<div id="usr">'+data[i].user.name+'</br></div>').listview('refresh');
+				});
 		
->>>>>>> a5a7ff3080d1097420e1844b2941f994e0f1aa36
-        </div>
-	</div><!-- /content -->
-	
-	
-	<div data-role="footer">
-	<a href="#Main" data-role="button">Home</a>
-	</div><!-- /footer -->
-	
-</div><!-- /User Page -->
+				$.mobile.changePage('#user');
+			}
+		</script>
 
-
-<!-- Tweet View page -->
-<div data-role="page" id="tweetPage">
-
-	<div data-role="header">
-		<h1>Tweet page</h1>
-	</div><!-- /header -->
-
-	<div data-role="content">
-		<div id="post">
-        	<ul data-role="listview">
-
-            </ul>
-        </div>
-	</div><!-- /content -->
-	
-	
-	<div data-role="footer">
-	<a href="#Main" data-role="button">Home</a>
-	</div><!-- /footer -->
-	
-</div><!-- /Tweet Page -->
-
-
-
-
-</body>
+	</body>
 </html>
