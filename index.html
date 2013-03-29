@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+
+<script scr="scripts.js"></script>
 	
 </head>
 
@@ -35,19 +37,21 @@
 <script type="text/javascript">
     $.getJSON('favs.json', function(data) {
         $.each(data, function (i, value) {
-			$('#tweets').children('ul').append('<div id='+i+'><a href="javascript:trasitionUser()" onClick="sessionStorage.idUser='+i+'" title="User Info">'+data[i].user.name+'</a></br>'+data[i].text+'</br>'+data[i].in_reply_to_user_str+'</p></div>').listview('refresh');
+			$('#tweets').children('ul').append('<div id='+i+'><a href="javascript:transitionUser()" onClick="window.localStorage.idUser=1" title="User Info">'+data[i].user.name+'</a></br>'+data[i].text+'</br>'+data[i].in_reply_to_user_str+'</p></div>').listview('refresh');
 			<!-- Insert the from where is the replies-->
         });
     });
 </script>
 
 <script type="text/javascript">
-	function trasitionUser() {
+	function transitionUser() {
+		alert(document.getElementById());
 		$.mobile.changePage('#user');
 
 		$.getJSON('favs.json', function(data) {
-//			alert(sessionStorage.idUser);
-			$('#usr').children('ul').replaceWith('<p>'+data[1].user.name+'</br></p>').listview('refresh');;
+			alert(window.localStorage.idUser);
+			alert("abc");
+			$('#usr').children('ul').replaceWith('<p>'+data[0].user.name+'</br></p>').listview('refresh');
 		});
 	}
 </script>
@@ -60,8 +64,10 @@
 		<h1>Page Title</h1>
 	</div><!-- /header -->
 	
-	<div data-role="content">
+	<div data-role="content">´
+	
 		<div id="usr">
+		<script type="text/javascript">transitionUser()</script>
         	<ul data-role="listview">
 
             </ul>
